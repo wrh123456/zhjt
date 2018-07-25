@@ -9,6 +9,17 @@
         android:id="@+id/welcome_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <Button
+        android:id="@+id/button_login_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击登录"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/bt_background"
+        android:visibility="gone"
+        />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.zhjt;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -19,12 +21,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Welcome extends AppCompatActivity implements ViewPager.OnPageChangeListener{
+public class Welcome extends AppCompatActivity implements ViewPager.OnPageChangeListener,View.OnClickListener{
     private ViewPager viewPager;
     private List<ImageView> pagers;
     private LinearLayout linearLayout;//装点的容器
     private View mViewpoint;//选中的点
     private int mm;//点之间的距离
+    private Button button_login;//点击进去登录
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class Welcome extends AppCompatActivity implements ViewPager.OnPageChange
         viewPager=(ViewPager)findViewById(R.id.welcome_pager);
         linearLayout=(LinearLayout)findViewById(R.id.layout);
         mViewpoint=(View)findViewById(R.id.view_write);
+        button_login=(Button)findViewById(R.id.button_login_welcome);
+        button_login.setOnClickListener(this);
 
         initViewPager();//初始化数据
 
@@ -47,6 +52,8 @@ public class Welcome extends AppCompatActivity implements ViewPager.OnPageChange
                 mm=linearLayout.getChildAt(1).getLeft()-linearLayout.getChildAt(0).getLeft();
             }
         });
+
+
 
     }
     private void initViewPager(){
@@ -90,13 +97,14 @@ public class Welcome extends AppCompatActivity implements ViewPager.OnPageChange
     @Override
     public void onPageSelected(int position) {
         //在最后一个页面时
-
+        button_login.setVisibility(position==pagers.size()-1?View.VISIBLE:View.GONE);
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
 
     }
+
 
     class WelcomePagerAdater extends PagerAdapter{
 
@@ -124,6 +132,16 @@ public class Welcome extends AppCompatActivity implements ViewPager.OnPageChange
         @Override
         public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
             container.removeView((View)object);
+        }
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_login_welcome:
+                Intent intent=new Intent(Welcome.this,Login.class);
+                startActivity(intent);
+                break;
+            default:break;
         }
     }
 
