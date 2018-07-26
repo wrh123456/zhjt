@@ -1,5 +1,6 @@
 package com.example.zhjt;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Handler;
 import android.os.Message;
@@ -92,11 +93,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.image_gun:break;
             case R.id.main_gongjiao:break;
-            case R.id.main_xunzhou:break;
+            case R.id.main_xunzhou://徐州交通按钮点击事件
+                Intent intent=new Intent(MainActivity.this,XuZhouTraffic.class);
+                startActivity(intent);
+                break;
             case R.id.main_tianqi:break;
             case R.id.main_geren:break;
             case R.id.main_dache:break;
-            case R.id.main_shenghuo:break;
+            case R.id.main_shenghuo:
+                Intent intent1=new Intent(MainActivity.this,LifeCoupon.class);
+                startActivity(intent1);
+                break;
             case R.id.main_chuxing:break;
             case R.id.main_shinei:break;
             case R.id.main_map:break;
