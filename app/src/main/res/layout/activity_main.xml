@@ -1,18 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#ffffaa"
+    >
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="智慧交通模拟题"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="15dp"
+        android:background="#f0f0f0"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        >
+        <ImageView
+            android:id="@+id/image_gun"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:src="@drawable/et_background"
+            />
 
-</android.support.constraint.ConstraintLayout>
+        <!--公交出行-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+
+            >
+            <Button
+                android:id="@+id/main_gongjiao"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:text="公交出行"
+                android:textSize="20dp"
+                android:background="#00e3e3"
+                />
+            <Button
+                android:id="@+id/main_xunzhou"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="徐州交通"
+                android:textSize="16sp"
+                android:textColor="#fff"
+                android:layout_marginLeft="10dp"
+                android:background="#00e3e3"
+                />
+        </LinearLayout>
+
+        <!--天气-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+            <Button
+                android:id="@+id/main_tianqi"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="天气"
+                android:textSize="20sp"
+                android:background="#00bb00"
+                />
+            <Button
+                android:id="@+id/main_geren"
+                android:layout_width="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="个人信息管理"
+                android:textSize="20sp"
+                android:background="#00aeae"
+                />
+            <Button
+                android:id="@+id/main_dache"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:text="打车信息"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:background="#ff359a"
+                />
+        </LinearLayout>
+
+        <!--生活优惠券-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+            <Button
+                android:id="@+id/main_shenghuo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="生活\n优惠券"
+                android:background="#00e3e3"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                >
+                <Button
+                    android:id="@+id/main_chuxing"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="出行\n朋友圈"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#02df82"
+                    />
+                <Button
+                    android:id="@+id/main_shinei"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="市内路况"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:background="#02df82"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_marginLeft="10dp"
+                android:background="#00e3e3"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:id="@+id/main_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    />
+                <TextView
+                    android:id="@+id/main_meloacation"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="我的位置"
+                    android:padding="5dp"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--摇一摇退出-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="摇一摇退出登录"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
