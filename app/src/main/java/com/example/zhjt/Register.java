@@ -62,5 +62,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
     }
 }

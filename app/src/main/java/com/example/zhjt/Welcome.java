@@ -138,7 +138,9 @@ public class Welcome extends AppCompatActivity implements ViewPager.OnPageChange
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_login_welcome:
-                Intent intent=new Intent(Welcome.this,Login.class);
+                Intent intent=new Intent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setClass(Welcome.this,Login.class);
                 startActivity(intent);
                 break;
             default:break;

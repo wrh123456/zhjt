@@ -35,6 +35,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private TextView unpass;
     private TextView a;
 
+
     //实现记录上一次的用户名
     private RememberName sp = new RememberName();
 
@@ -90,7 +91,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         public void run() {
                             sp.setName("username", Login.this, username.getText().toString());
                             Toast.makeText(Login.this, "登录成功！", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Login.this, MainActivity.class);
+                            Intent intent = new Intent();
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.setClass(Login.this, MainActivity.class);
                             startActivity(intent);
                         }
                     });
@@ -137,5 +140,4 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onDestroy() {
         super.onDestroy();
     }
-
 }
