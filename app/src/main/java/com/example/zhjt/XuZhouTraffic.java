@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.zhjt.Utils.PlayMusic;
 import com.example.zhjt.Utils.TitleRecyclerAdapter;
 import com.example.zhjt.Bean.title;
 import com.example.zhjt.XunZhouFragment.NewsFragment;
@@ -19,10 +20,12 @@ import java.util.List;
 
 public class XuZhouTraffic extends AppCompatActivity{
     private List<title> titles;
+    private PlayMusic playMusic;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xuzhoutraffic);
+        playMusic=new PlayMusic(8);//播放音乐
         inittitle();
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.recycler_title);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
@@ -50,5 +53,22 @@ public class XuZhouTraffic extends AppCompatActivity{
         titles.add(t4);
         title t5=new title(5,"体育");
         titles.add(t5);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStart() {//活动由不可见变为可见使调用
+        super.onStart();
+        //播放音乐
+        playMusic=new PlayMusic(8);
+    }
+
+    @Override
+    protected void onStop() {//活动完全不可见时调用
+        super.onStop();
+        playMusic.stopmusic();
     }
 }

@@ -145,4 +145,5 @@ public class Welcome extends AppCompatActivity implements ViewPager.OnPageChange
         }
     }
 
+
 }

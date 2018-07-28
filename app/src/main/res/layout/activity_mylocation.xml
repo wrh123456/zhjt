@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    >
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        ></com.baidu.mapapi.map.MapView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        >
+        <Button
+            android:id="@+id/mylocation_you"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="获取目标位置"
+            android:layout_marginTop="25dp"
+            android:textSize="20sp"
+            android:background="@drawable/mylocation_button_bg"
+            />
+        <Button
+            android:id="@+id/mylocation_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="定位自身位置"
+            android:layout_marginTop="25dp"
+            android:textSize="20sp"
+            android:background="@drawable/mylocation_button_bg"
+            />
+    </LinearLayout>
+
+</LinearLayout>

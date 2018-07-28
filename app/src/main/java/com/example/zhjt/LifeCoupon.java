@@ -3,19 +3,16 @@ package com.example.zhjt;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.zhjt.Bean.Coupon;
 import com.example.zhjt.Utils.LifeAdapter;
+import com.example.zhjt.Utils.PlayMusic;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.zhjt.R.drawable.life_view_yellow;
 
 public class LifeCoupon extends AppCompatActivity implements View.OnClickListener{
     private ListView listView;
@@ -24,11 +21,14 @@ public class LifeCoupon extends AppCompatActivity implements View.OnClickListene
     private Button life_buttoncolor;
     private Button fanhui;
     private Button stop;
+    private PlayMusic playMusic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lifecoupon);
+        //播放音乐
+        playMusic=new PlayMusic(2);
         initCouponData();
         listView=(ListView)findViewById(R.id.life_list);
         LifeAdapter adapter=new LifeAdapter(this,R.layout.life_item,couponList);
@@ -60,5 +60,22 @@ public class LifeCoupon extends AppCompatActivity implements View.OnClickListene
                 break;
                 default:break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+    @Override
+    protected void onStart() {//活动由不可见变为可见使调用
+        super.onStart();
+        //播放音乐
+        playMusic=new PlayMusic(2);
+    }
+
+    @Override
+    protected void onStop() {//活动完全不可见时调用
+        super.onStop();
+        playMusic.stopmusic();
     }
 }
