@@ -22,8 +22,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
@@ -122,12 +124,45 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
+                    RequestBody requestBody=new FormBody.Builder()
+                            .add("name",username.getText().toString())
+                            .add("pass",password.getText().toString())
+                            .build();
                     Request request = new Request.Builder()
-                            .url("http://192.168.3.102:9090/login.json")
+                            .url("http://192.168.3.102:9090/ZHBJ/AdminRegisterServlet")
+                            .post(requestBody)
                             .build();
                     Response response = client.newCall(request).execute();
                     String reader = response.body().string();
-                    getJsonLoginData(reader);
+                    if(reader.equals("成功")){
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                sp.setName("username", Login.this, username.getText().toString());
+                                Toast.makeText(Login.this, "登录成功！", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent();
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.setClass(Login.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                    }else if(reader.equals("no")){
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(Login.this, "用户名或密码错误！", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                    else{
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(Login.this, "用户名或密码错误！", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                    //getJsonLoginData(reader);
                 } catch (IOException e) {
                     Toast.makeText(Login.this, "请检查您的网络是否连接", Toast.LENGTH_LONG).show();
                     e.printStackTrace();

@@ -22,6 +22,8 @@ import java.util.List;
 public class TitleRecyclerAdapter extends RecyclerView.Adapter<TitleRecyclerAdapter.ViewHolder>{
     private List<title> mtitletext;
     private XuZhouTraffic mcontext;
+    private Button mbutton;
+
     public TitleRecyclerAdapter(List<title> list, XuZhouTraffic context) {
         mtitletext=list;
         mcontext=context;
@@ -32,9 +34,16 @@ public class TitleRecyclerAdapter extends RecyclerView.Adapter<TitleRecyclerAdap
         public ViewHolder(View itemView) {
             super(itemView);
             buttontext=(Button) itemView.findViewById(R.id.title_buttontext);
+            //标记button
 
         }
     }
+
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
@@ -43,12 +52,11 @@ public class TitleRecyclerAdapter extends RecyclerView.Adapter<TitleRecyclerAdap
         holder.buttontext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i=0;i<parent.getChildCount();i++){
-                    View v2=parent.getChildAt(i);
-                    v2.findViewById(R.id.title_buttontext).setBackgroundResource(R.drawable.button_title_false);
+                if(mbutton!=holder.buttontext){
+                    mbutton.setBackgroundResource(R.drawable.button_title_false);
+                    mbutton=holder.buttontext;
                 }
                 holder.buttontext.setBackgroundResource(R.drawable.button_title);
-                Log.d("TitleRecyclerAdapter", "onClick: 你点击了"+holder.buttontext.getText().toString());
                 String a=holder.buttontext.getText().toString();
                 switch (a){
                     case "要闻":setFragment(new NewsFragment(mcontext));break;
@@ -68,8 +76,11 @@ public class TitleRecyclerAdapter extends RecyclerView.Adapter<TitleRecyclerAdap
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final title t = mtitletext.get(position);
         holder.buttontext.setText(t.getTitletext());
-        if (position == 0)
+        if (position == 0) {
             holder.buttontext.setBackgroundResource(R.drawable.button_title);
+            mbutton=holder.buttontext;
+        }
+
 
     }
     private void setFragment(Fragment fragment){

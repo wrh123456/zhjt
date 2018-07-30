@@ -78,4 +78,10 @@ public class LifeCoupon extends AppCompatActivity implements View.OnClickListene
         super.onStop();
         playMusic.stopmusic();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        playMusic.stopmusic();
+    }
 }

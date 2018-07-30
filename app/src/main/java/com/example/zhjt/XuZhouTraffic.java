@@ -51,24 +51,33 @@ public class XuZhouTraffic extends AppCompatActivity{
         titles.add(t3);
         title t4=new title(4,"社会");
         titles.add(t4);
+//        title a1=new title(4,"社会2");
+//        titles.add(a1);
+//        title a2=new title(4,"社会3");
+//        titles.add(a2);
+//        title a3=new title(4,"社会4");
+//        titles.add(a3);
+//        title a4=new title(4,"社会5");
+//        titles.add(a4);
+//        title a5=new title(4,"社会6");
+//        titles.add(a5);
         title t5=new title(5,"体育");
         titles.add(t5);
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 
     @Override
     protected void onStart() {//活动由不可见变为可见使调用
         super.onStart();
         //播放音乐
-        playMusic=new PlayMusic(8);
+        if(playMusic==null) {
+            playMusic = new PlayMusic(7);
+        }
     }
-
     @Override
-    protected void onStop() {//活动完全不可见时调用
-        super.onStop();
-        playMusic.stopmusic();
+    protected void onPause() {
+        super.onPause();
+        if(playMusic!=null) {
+            playMusic.stopmusic();
+        }
     }
 }

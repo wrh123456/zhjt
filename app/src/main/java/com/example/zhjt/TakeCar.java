@@ -216,22 +216,22 @@ public class TakeCar extends AppCompatActivity implements View.OnClickListener{
             editor.putString("nowdate",date3);
             editor.putLong("moneylong", currentSecond);
             editor.commit();
-            playMusic.stopmusic();
+
         }
     }
     @Override
     protected void onStart() {//活动由不可见变为可见使调用
         super.onStart();
         //播放音乐
-        playMusic=new PlayMusic(6);
+        if(playMusic==null) {
+            playMusic = new PlayMusic(7);
+        }
     }
-
     @Override
-    protected void onStop() {//活动完全不可见时调用
-        super.onStop();
-        playMusic.stopmusic();
+    protected void onPause() {
+        super.onPause();
+        if(playMusic!=null) {
+            playMusic.stopmusic();
+        }
     }
-
-
-
 }

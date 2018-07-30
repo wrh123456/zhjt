@@ -18,7 +18,6 @@ public class PlayMusic{
     }
     private void initdata(){
         String musicname="";
-        Log.d(TAG, "PlayMusic: ");
         switch (key){
             case 1:
                 musicname="a1.mp3";
@@ -44,12 +43,11 @@ public class PlayMusic{
             case 8:
                 musicname="a8.mp3";
                 break;
-                default:break;
+            default:break;
         }
 
         try {
             File file=new File(Environment.getExternalStorageDirectory(),musicname);
-            Log.d(TAG, "PlayMusic: "+musicname);
             mediaPlayer.setDataSource(file.getPath());
             mediaPlayer.prepare();
             mediaPlayer.start();
@@ -59,6 +57,7 @@ public class PlayMusic{
     }
     public void stopmusic(){
         try {
+
             mediaPlayer.stop();
             mediaPlayer.prepare();
         } catch (IOException e) {

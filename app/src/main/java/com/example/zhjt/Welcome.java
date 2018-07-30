@@ -147,5 +147,8 @@ public class Welcome extends AppCompatActivity implements ViewPager.OnPageChange
         }
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 }

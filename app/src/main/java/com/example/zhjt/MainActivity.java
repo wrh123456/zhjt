@@ -213,11 +213,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(mshakelistener!=null){
             mshakelistener.stop();
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+        if(playMusic!=null) {
+            playMusic.stopmusic();
+        }
     }
 
     @Override
@@ -227,9 +225,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         playMusic=new PlayMusic(1);
     }
 
-    @Override
-    protected void onStop() {//活动完全不可见时调用
-        super.onStop();
-        playMusic.stopmusic();
-    }
 }
