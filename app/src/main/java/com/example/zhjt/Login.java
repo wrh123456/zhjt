@@ -129,7 +129,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             .add("pass",password.getText().toString())
                             .build();
                     Request request = new Request.Builder()
-                            .url("http://192.168.3.102:9090/ZHBJ/AdminRegisterServlet")
+                            .url("http://192.168.3.102:9090/ZHBJ/AdminLoginServlet")
                             .post(requestBody)
                             .build();
                     Response response = client.newCall(request).execute();
